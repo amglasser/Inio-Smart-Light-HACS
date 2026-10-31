@@ -18,6 +18,9 @@ MODULES = [
     "entity",
     "light",
     "switch",
+    "button",
+    "room_sync",
+    "syncstate",
     "sensor",
     "config_flow",
 ]

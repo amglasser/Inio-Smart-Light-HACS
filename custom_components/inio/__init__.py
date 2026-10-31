@@ -9,7 +9,12 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from .api import InioClient
 from .coordinator import InioConfigEntry, InioCoordinator
 
-PLATFORMS: list[Platform] = [Platform.LIGHT, Platform.SENSOR, Platform.SWITCH]
+PLATFORMS: list[Platform] = [
+    Platform.BUTTON,
+    Platform.LIGHT,
+    Platform.SENSOR,
+    Platform.SWITCH,
+]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: InioConfigEntry) -> bool:

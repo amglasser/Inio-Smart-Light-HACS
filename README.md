@@ -12,6 +12,8 @@ It talks to the lamp over your local network — no cloud, no account.
 |---|---|
 | `light.inio_…` | On/off, brightness (0–100 %), color temperature (2,700–6,500 K) |
 | `switch.inio_…_connected_mode` | Hands control to the lamp's app schedule ("connected" mode); turning it off keeps the lamp on in static mode |
+| `switch.inio_…_room_sync` | Room Sync: while on, changes to this lamp are mirrored to the other inio lamps in the same area |
+| `button.inio_…_sync_room_now` | Room Sync, one shot: pushes this lamp's state to the other inio lamps in the same area |
 | `sensor.inio_…_mode` | `off` / `static` / `connected` |
 | `sensor.inio_…_add_on` | `none` / `boost` / `relax` / `scenario` |
 | `sensor.inio_…_warm_led_duty`, `…_cold_led_duty` | Raw LED duty cycles (diagnostic, disabled by default) |
@@ -30,6 +32,27 @@ Give the lamp a fixed address (DHCP reservation) in your router. If it ever chan
 on the integration entry.
 
 Options (polling interval, default 15 s) are under the integration's **Configure** button.
+
+## Room Sync
+
+If you have several inio lamps in one room, Room Sync keeps their on/off state, brightness and color
+temperature the same.
+
+1. Assign all the lamps to the same **area** in Home Assistant (Settings → Areas). Room Sync uses the area of
+   the lamp's light entity, falling back to the device's area.
+2. **Sync room now** (button) copies the lamp's current state to the other lamps in the area once.
+3. **Room sync** (switch) keeps doing that: turn it on for the lamp you want as the source. Switching it on
+   also performs an initial sync. You can turn it on for every lamp in the room, so touching any of them
+   updates the rest.
+
+Notes:
+
+- Changes made from Home Assistant are mirrored within about a second. Changes made on the lamp itself
+  (touch) are noticed at the next poll, so up to the polling interval (15 s by default).
+- If the source lamp is in connected mode, the other lamps are put into connected mode too.
+- Small differences (under 3 % brightness or 100 K) are ignored, because brightness and color temperature are
+  estimates. After Room Sync commands a lamp, that lamp is ignored for 20 s so lamps don't echo each other.
+- Turning the switch on fails with a message if no other inio lamp is in the same area.
 
 ## How it works
 

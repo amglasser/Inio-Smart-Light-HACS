@@ -44,9 +44,17 @@
     }
   },
   "entity": {
+    "button": {
+      "sync_room": {
+        "name": "Sync room now"
+      }
+    },
     "switch": {
       "connected_mode": {
         "name": "Connected mode"
+      },
+      "room_sync": {
+        "name": "Room sync"
       }
     },
     "sensor": {
