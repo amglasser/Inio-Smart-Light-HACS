@@ -66,7 +66,7 @@ At very low brightness the color temperature estimate gets noisier.
 ## Development
 
 ```bash
-pip install pytest aiohttp
+pip install pytest aiohttp  # add homeassistant to also run the import smoke tests
 pytest
 ```
 
