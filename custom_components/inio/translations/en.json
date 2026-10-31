@@ -1,0 +1,78 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add an inio lamp",
+        "description": "Enter the IP address or hostname of your inio one lamp. Giving the lamp a fixed address (DHCP reservation) in your router is recommended.",
+        "data": {
+          "host": "Host"
+        },
+        "data_description": {
+          "host": "IP address or hostname of the lamp, e.g. 192.168.50.224."
+        }
+      },
+      "reconfigure": {
+        "title": "Change the lamp's address",
+        "data": {
+          "host": "Host"
+        },
+        "data_description": {
+          "host": "New IP address or hostname of the lamp."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the lamp. Check the address and that the lamp is powered and on the same network.",
+      "unknown": "Unexpected error. Check the Home Assistant log for details."
+    },
+    "abort": {
+      "already_configured": "This lamp is already configured.",
+      "reconfigure_successful": "The lamp's address was updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "inio options",
+        "data": {
+          "scan_interval": "Polling interval"
+        },
+        "data_description": {
+          "scan_interval": "How often to read the lamp's state, in seconds."
+        }
+      }
+    }
+  },
+  "entity": {
+    "switch": {
+      "connected_mode": {
+        "name": "Connected mode"
+      }
+    },
+    "sensor": {
+      "mode": {
+        "name": "Mode",
+        "state": {
+          "off": "Off",
+          "static": "Static",
+          "connected": "Connected"
+        }
+      },
+      "addon": {
+        "name": "Add-on",
+        "state": {
+          "none": "None",
+          "boost": "Boost",
+          "relax": "Relax",
+          "scenario": "Scenario"
+        }
+      },
+      "warm_duty": {
+        "name": "Warm LED duty"
+      },
+      "cold_duty": {
+        "name": "Cold LED duty"
+      }
+    }
+  }
+}

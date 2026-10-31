@@ -1,0 +1,8 @@
+This integration is not affiliated with or endorsed by inio / LS-Trafo.
+
+The lamp's local HTTP endpoints and the PWM calibration data in
+custom_components/inio/model_data.py were derived from the community
+homebridge-inio plugin by Hannes Güdelhöfer
+(https://github.com/reckter/homebridge-inio), licensed under the Apache License,
+Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0). The calibration
+table was condensed into two lookup curves.
